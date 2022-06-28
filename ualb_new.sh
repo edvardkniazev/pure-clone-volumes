@@ -53,9 +53,8 @@ else
     TESTN=$(ps -ef | grep brarchive | grep -v grep | grep -v $$ | wc -l)
     if [ $TESTN -eq 0 ]; then
         echo "$T - $ACTPERC% : Archive log directory check completed - ERROR: LOCKFILE is present, but BRARCHIVE not found" >> $LOGFILE
-
-        echo "$T - $ACTPERC% : Archive log directory check completed - ERROR: LOCKFILE is present, but BRARCHIVE not found" | mailx -s "UALB: ArchiveLog Backup on `date +%d.%m.%Y_%H:%M` (Error)"  sap_bc_alerts@x5.ru
-
+        echo "$T - $ACTPERC% : Archive log directory check completed - ERROR: LOCKFILE is present, but BRARCHIVE not found" \
+            | mailx -s "UALB: ArchiveLog Backup on `date +%d.%m.%Y_%H:%M` (Error)"  sap_bc_alerts@x5.ru
     else
         echo "$T - $ACTPERC% : Archive log directory check completed - OK: BRARCHIVE is working..." >> $LOGFILE
     fi
